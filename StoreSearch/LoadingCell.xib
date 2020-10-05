@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoadingCell" id="Zrp-jj-7Qp">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zrp-jj-7Qp" id="kUR-3i-CAn">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u2v-F2-Bd3">
+                        <rect key="frame" x="146" y="30" width="83" height="20"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceM-zF-yom">
+                                <rect key="frame" x="0.0" y="0.0" width="55" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="J4F-w4-W2w">
+                                <rect key="frame" x="63" y="0.0" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="J4F-w4-W2w" firstAttribute="leading" secondItem="ceM-zF-yom" secondAttribute="trailing" constant="8" id="7Qb-ae-5hG"/>
+                            <constraint firstAttribute="trailing" secondItem="J4F-w4-W2w" secondAttribute="trailing" id="9sH-lo-g0q"/>
+                            <constraint firstAttribute="bottom" secondItem="ceM-zF-yom" secondAttribute="bottom" constant="2" id="A2k-iR-6h1"/>
+                            <constraint firstItem="ceM-zF-yom" firstAttribute="top" secondItem="u2v-F2-Bd3" secondAttribute="top" id="P5M-3A-loO"/>
+                            <constraint firstItem="ceM-zF-yom" firstAttribute="leading" secondItem="u2v-F2-Bd3" secondAttribute="leading" id="QJU-ov-SBQ"/>
+                            <constraint firstItem="J4F-w4-W2w" firstAttribute="leading" secondItem="ceM-zF-yom" secondAttribute="trailing" constant="8" id="Rpt-3m-fhG"/>
+                            <constraint firstItem="J4F-w4-W2w" firstAttribute="top" secondItem="u2v-F2-Bd3" secondAttribute="top" id="dlq-kz-9F2"/>
+                            <constraint firstAttribute="bottom" secondItem="J4F-w4-W2w" secondAttribute="bottom" id="mez-E6-ghc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="u2v-F2-Bd3" firstAttribute="centerY" secondItem="kUR-3i-CAn" secondAttribute="centerY" id="2b5-sf-VTS"/>
+                    <constraint firstItem="u2v-F2-Bd3" firstAttribute="centerX" secondItem="kUR-3i-CAn" secondAttribute="centerX" id="6cI-ee-jAs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="53" y="-54"/>
+        </tableViewCell>
+    </objects>
+</document>
