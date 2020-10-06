@@ -53,28 +53,47 @@ class SearchViewController: UIViewController {
         
         func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             if !searchBar.text!.isEmpty {
+                
         searchBar.resignFirstResponder()
                 isLoading = true
                 tableView.reloadData()
             hasSearched = true
             searchResults = []
-                
-        // 1
-        let queue = DispatchQueue.global()
-                // 2
-        queue.async {
-            let url = self.iTunesURL(searchText: searchBar.text!)
-
-        if let data = self.performStoreRequest(with: url) {
-            self.searchResults = self.parse(data: data)
-            self.searchResults.sort(by: <)
-        // 3
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.tableView.reloadData() }
-        return
-        } }
-        }
+            // 1
+            let url = iTunesURL(searchText: searchBar.text!)
+            // 2
+            let session = URLSession.shared
+            // 3
+            let dataTask = session.dataTask(with: url,
+                                            
+                    completionHandler: { data, response, error in
+            DispatchQueue.main.async {
+                self.hasSearched = false
+                self.isLoading = false
+                self.tableView.reloadData()
+                self.showNetworkError()
+                        }
+            // 4
+                    if let error = error {
+                    print("Failure! \(error.localizedDescription)")
+                    } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                        if let data = data {
+                            self.searchResults = self.parse(data: data)
+                            self.searchResults.sort(by: <)
+                            DispatchQueue.main.async {
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                                
+                            }
+                            return
+                            }
+                    } else {
+                      print("Failure! \(response!)")
+                    }
+                })
+            // 5
+                dataTask.resume()
+            }
         }
 }
             /*
@@ -136,15 +155,7 @@ class SearchViewController: UIViewController {
         return url!
         }
         
-        func performStoreRequest(with url: URL) -> Data? {
-            do {
-                return try Data(contentsOf:url)
-            }
-            catch {
-        print("Download Error: \(error.localizedDescription)")
-                   showNetworkError()
-        return nil
-        } }
+       
         
         func parse(data: Data) -> [SearchResult] {
             do {
